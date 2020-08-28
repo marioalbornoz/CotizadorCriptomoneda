@@ -1,4 +1,5 @@
 import React from 'react'
+import useMoneda from "../hooks/useMoneda";
 import styled from '@emotion/styled';
 
 const Boton = styled.input`
@@ -20,9 +21,18 @@ const Boton = styled.input`
 `;
 
 export const Form = () => {
+
+    const OPCIONES = [
+        {codigo:"CLP", nombre:"Peso Chileno"},
+        {codigo:"USD", nombre:"Dolar de estados unidos"},
+        {codigo:"EUR", nombre:"Euro"},
+        {codigo: "GBP",nombre:"Libra esterlina" },
+    ]
     
+    const [modenda, SelectMoneda, actualizarMoneda] = useMoneda("Elige tu Moneda", "", OPCIONES);
     return (
         <form>
+            <SelectMoneda />
             <Boton 
                 type="Submit"
                 value="Calcular"
