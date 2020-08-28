@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import imagen from "./cryptomonedas.png";
+import { Form } from './components/Form';
 
 const Contenedor = styled.div`
   max-width: 900px;
@@ -42,7 +43,10 @@ function App() {
           alt="imagen crypto"
         />
       </div>
-      <div><Heading>Cotizador de criptomonedas</Heading></div>
+      <div>
+        <Heading>Cotizador de criptomonedas</Heading>
+        <Form />
+      </div>
       
     </Contenedor>
   );
