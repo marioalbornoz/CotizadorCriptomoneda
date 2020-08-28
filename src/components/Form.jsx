@@ -29,7 +29,7 @@ export const Form = () => {
         {codigo: "GBP",nombre:"Libra esterlina" },
     ]
     
-    const [modenda, SelectMoneda, actualizarMoneda] = useMoneda("Elige tu Moneda", "", OPCIONES);
+    const [modenda, SelectMoneda] = useMoneda("Elige tu Moneda", "", OPCIONES);
     return (
         <form>
             <SelectMoneda />
