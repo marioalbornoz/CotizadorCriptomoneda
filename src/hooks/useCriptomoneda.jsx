@@ -22,26 +22,30 @@ const Select = styled.select`
     font-size:1.2rem;
 `;
 
-const useMoneda = (label, stateInicial, opciones) => {
+const useCriptomoneda = (label, stateInicial) => {
     // Definicion del state a usar
     const [state, actualizarState] = useState(stateInicial);
 
     const Seleccionar = () => (
-        <Fragment>
-            <Label>{label}</Label>
-            <Select
-                onChange={ e =>{ actualizarState(e.target.value)}}
-                value={state}
-            >
-            <option value=""> - Seleccione</option>
-                {opciones.map( (opcion)=> (
-                    <option key={opcion.codigo} value={opcion.codigo}>{opcion.nombre}</option>
-                ))}
-            </Select>
-        </Fragment>
-    )
+      <Fragment>
+        <Label>{label}</Label>
+        <Select
+          onChange={(e) => {
+            actualizarState(e.target.value);
+          }}
+          value={state}
+        >
+          <option value=""> - Seleccione</option>
+          {/* {opciones.map((opcion) => (
+            <option key={opcion.codigo} value={opcion.codigo}>
+              {opcion.nombre}
+            </option>
+          ))} */}
+        </Select>
+      </Fragment>
+    );
 
     return [state, Seleccionar, actualizarState];
 }
 
-export default useMoneda;
+export default useCriptomoneda;
