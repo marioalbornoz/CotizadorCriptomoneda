@@ -23,7 +23,7 @@ const Boton = styled.input`
     }    
 `;
 
-export const Form = () => {
+export const Form = ({setmoneda, setcriptomoneda}) => {
 
     const [listacripto, guardarListacripto] = useState([]);
     const [error, guardarError] = useState(false);
@@ -58,6 +58,8 @@ export const Form = () => {
             return;
         }
         guardarError(false);
+        setmoneda(moneda);
+        setcriptomoneda(criptomoneda);
     }
 
     return (
