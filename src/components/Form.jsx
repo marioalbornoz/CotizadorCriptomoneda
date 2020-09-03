@@ -25,6 +25,7 @@ const Boton = styled.input`
 export const Form = () => {
 
     const [listacripto, guardarListacripto] = useState([]);
+    const [error, guardarError] = useState(false);
 
     const OPCIONES = [
         {codigo:"CLP", nombre:"Peso Chileno"},
@@ -44,8 +45,22 @@ export const Form = () => {
         }
         consultarAPI();
     },[]);
+
+    const cotizarMoneda = (e) => {
+        e.preventDefault();
+
+        if(moneda === '' || criptomoneda === ''){
+            guardarError(true);
+            return;
+        }
+        guardarError(false);
+    }
+
     return (
-        <form>
+        <form
+            onSubmit={cotizarMoneda}
+        >   
+            { error ? 'Hay un error' : null}
             <SelectMoneda />
             <SelectCriptomoneda />
             <Boton 
