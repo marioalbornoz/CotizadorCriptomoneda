@@ -11,7 +11,7 @@ const MensajeError = styled.p`
     text-align: center;
     font-family: 'Bebas Neue', cursive;
 `;
-const Error = ({mensajes}) => {
+const Error = ({mensaje}) => {
     return (
     <MensajeError>{mensaje}</MensajeError>
     )
