@@ -3,6 +3,7 @@ import useMoneda from "../hooks/useMoneda";
 import axios from 'axios';
 import styled from '@emotion/styled';
 import useCriptomoneda from '../hooks/useCriptomoneda';
+import Error from  '../components/Error';
 
 const Boton = styled.input`
     margin-top: 20px;
@@ -40,15 +41,18 @@ export const Form = () => {
     useEffect( () => {
         const consultarAPI = async() =>{
             const url = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD`;
-            const response =await axios.get(url);
+            const response = await axios.get(url);
             guardarListacripto(response.data.Data);
         }
         consultarAPI();
     },[]);
 
+
+    // Al hacer submit
     const cotizarMoneda = (e) => {
         e.preventDefault();
 
+        // Si no hay nada seleccionado
         if(moneda === '' || criptomoneda === ''){
             guardarError(true);
             return;
@@ -60,7 +64,7 @@ export const Form = () => {
         <form
             onSubmit={cotizarMoneda}
         >   
-            { error ? 'Hay un error' : null}
+            { error ? <Error mensaje ='Todos los campos son obligatorios.'/> : null}
             <SelectMoneda />
             <SelectCriptomoneda />
             <Boton 
